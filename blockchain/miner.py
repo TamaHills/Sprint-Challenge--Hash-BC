@@ -27,6 +27,7 @@ def proof_of_work(last_proof):
     
     while not valid_proof(last_hash, proof):
         proof = random.randint(0, sys.maxsize)
+
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
 
     return proof
@@ -72,14 +73,21 @@ if __name__ == '__main__':
     while True:
         # Get the last proof from the server
         r = requests.get(url=node + "/last_proof")
-        data = r.json()
+        try:
+            data = r.json()
+        except:
+            print('bad response')
         new_proof = proof_of_work(data.get('proof'))
 
         post_data = {"proof": new_proof,
                      "id": id}
 
         r = requests.post(url=node + "/mine", json=post_data)
-        data = r.json()
+        try:
+            data = r.json()
+        except:
+            print('bad response')
+
         if data.get('message') == 'New Block Forged':
             coins_mined += 1
             print("Total coins mined: " + str(coins_mined))
