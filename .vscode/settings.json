@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/Users/briandoyle/.local/share/virtualenvs/sc-hash-bc-student-HSwDRd-G/bin/python",
+    "python.pythonPath": "/home/matt/.pyenv/versions/3.8.1/bin/python",
     "workbench.colorCustomizations": {
         "activityBar.background": "#242E3C",
         "titleBar.activeBackground": "#334054",
